@@ -1,0 +1,21 @@
+<h1 mat-dialog-title *ngIf="!isUpdate">Create Contact</h1>
+<h1 mat-dialog-title *ngIf="isUpdate">Update Contact</h1>
+<div mat-dialog-content>
+    <div class="form-field">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput [(ngModel)]="name">
+        </mat-form-field>
+    </div>
+    <div class="form-field">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Number</mat-label>
+            <input matInput [(ngModel)]="number" type="number">
+        </mat-form-field>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-button *ngIf="isUpdate" (click)="addUpdateContact()">Update</button>
+    <button mat-button *ngIf="!isUpdate" (click)="addUpdateContact()">Add</button>
+    <button mat-button mat-dialog-close>Close</button>
+</div>

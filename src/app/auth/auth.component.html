@@ -1,0 +1,71 @@
+<div class="content">
+    <div class="choose-form">
+        <div class="login-button" [ngClass]="{'active': isLoginActive, 'not-active': !isLoginActive}"
+            (click)="changeIsLoginFlag()">
+            LOG IN
+        </div>
+        <div class="register-button" [ngClass]="{'active': !isLoginActive, 'not-active': isLoginActive}"
+            (click)="changeIsLoginFlag()">
+            SIGN UP
+        </div>
+    </div>
+    <div class="form-fields">
+        <div class="info-message">
+            {{message}}
+        </div>
+        <form [formGroup]="loginForm">
+            <div *ngIf="isLoginActive">
+                <div class="form-field">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Username</mat-label>
+                        <input matInput formControlName="username">
+                    </mat-form-field>
+                </div>
+                <div class="form-field">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input matInput formControlName="password" type="password">
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="registerForm">
+            <div *ngIf="!isLoginActive">
+                <div class="form-field">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Username</mat-label>
+                        <input matInput formControlName="username">
+                    </mat-form-field>
+                </div>
+                <div class="form-field">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email">
+                    </mat-form-field>
+                </div>
+                <div class="form-field">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input matInput formControlName="password" type="password">
+                    </mat-form-field>
+                </div>
+                <div class="form-field">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>First Name</mat-label>
+                        <input matInput formControlName="firstName">
+                    </mat-form-field>
+                </div>
+                <div class="form-field">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput formControlName="lastName">
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="form-button">
+        <button mat-button  mat-raised-button color="primary" *ngIf="isLoginActive" (click)="login()">LOG IN</button>
+        <button mat-button  mat-raised-button color="primary" *ngIf="!isLoginActive" (click)="register()">SIGN UP</button>
+    </div>
+</div>
